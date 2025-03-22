@@ -7,36 +7,61 @@ from aiogram.fsm.context import FSMContext
 import app.keyboards as kb
 from app.middlewares import TestMiddleware
 
-router = Router()
+common_router = Router()
 
-router.message.middleware(TestMiddleware())
+common_router.message.middleware(TestMiddleware())
 
 # class Reg(StatesGroup):
 #     name = State()
 #     number = State()
 
 
-@router.message(Command('start'))
+@common_router.message(Command('start'))
 async def start_handler(message: Message):
     await message.answer(f"Привет, {message.from_user.first_name}! \nЭтот бот помогает дизайнерам и сайтологам,"
                          f" предоставляя HTML и CSS-коды. \nТвой ID: {message.from_user.id} "
                          f"\nИспользуй /help для навигации.", reply_markup=kb.menu_keyboard
                          )
 
-
-@router.message(Command('help'))
+@common_router.message(Command('policy'))
 async def help_handler(message: Message):
-    await message.reply(
-        "ℹ️ *Доступные команды:*\n"
-        "/start - Начать работу с ботом\n"
-        "/menu - Главное меню\n"
-        "/help - Помощь по командам",
-        parse_mode="Markdown"
+    await message.answer(
+        "Политика конфиденциальности доступна по кнопке ниже",
+        reply_markup=kb.inline_policy
     )
 
-@router.message(Command("menu"))
-async def menu_handler(message: Message):
-    await message.answer("📌 Главное меню:", reply_markup=kb.menu_keyboard)
+# @common_router.message(Command('help'))
+# async def help_handler(message: Message):
+#     await message.reply(
+#         "ℹ️ *Доступные команды:*\n"
+#         "/start - Начать работу с ботом\n"
+#         "/menu - Главное меню\n"
+#         "/help - Помощь по командам",
+#         parse_mode="Markdown"
+#     )
+# @common_router.message(Command("menu"))
+# async def menu_handler(message: Message):
+#     await message.answer("📌 Главное меню:", reply_markup=kb.menu_keyboard)
+#
+#
+# @common_router.message(Command('help'))
+# async def help_handler(message: Message):
+#     """Определяет роль пользователя и вызывает соответствующую команду"""
+#     if is_admin(message.from_user.id):
+#         await message.bot.send_message(message.chat.id, "/AdminHelp")
+#     else:
+#         await message.bot.send_message(message.chat.id, "/UserHelp")
+#
+# @common_router.message(Command('UserHelp'))
+# async def user_help_handler(message: Message):
+#     """Отправляет список команд для обычного пользователя"""
+#     await message.reply(
+#         "ℹ️ *Доступные команды для пользователя:*\n"
+#         "/GetCode - Получить HTML/CSS код\n"
+#         "/ListCodes - Список доступных кодов",
+#         parse_mode="Markdown"
+#     )
+
 # @router.message(Command("get_photo"))
 # async def get_photo(message: Message):
 #     await message.answer_photo(photo="ссылка", caption="описание к картинке")

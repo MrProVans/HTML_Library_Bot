@@ -12,6 +12,11 @@ menu_keyboard = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
+# Политика конфиденциальности
+inline_policy = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Открыть', url='https://docs.google.com/document/d/1xlgO_JlneAiabA7KX-nqhMYTW0jb_JLUAfC9x2TUSFo/edit?tab=t.0')],
+])
+
 # main = ReplyKeyboardMarkup(keyboard=[
 #     [KeyboardButton(text='Каталог')],
 #     [KeyboardButton(text='Корзина'), KeyboardButton(text='Контакты')]
