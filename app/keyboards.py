@@ -3,6 +3,15 @@ from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
 
+# Главное меню
+menu_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="📚 HTML-коды"), KeyboardButton(text="🎨 CSS-коды")],
+        [KeyboardButton(text="ℹ️ Помощь")]
+    ],
+    resize_keyboard=True
+)
+
 # main = ReplyKeyboardMarkup(keyboard=[
 #     [KeyboardButton(text='Каталог')],
 #     [KeyboardButton(text='Корзина'), KeyboardButton(text='Контакты')]
@@ -10,7 +19,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 #         resize_keyboard=True,
 #         input_field_placeholder='Выберите пункт меню')
 
-# main = InlineKeyboardMarkup(inline_keyboard=[
+# menu_keyboard = InlineKeyboardMarkup(inline_keyboard=[
 #     [InlineKeyboardButton(text='Каталог', callback_data='catalog'),],
 #     [InlineKeyboardButton(text='Корзина', callback_data='2'),
 #     InlineKeyboardButton(text='Контакты', callback_data='3'),]

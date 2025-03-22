@@ -1,5 +1,5 @@
 from aiogram import F, Router
-from aiogram.filters import CommandStart, Command
+from aiogram.filters import Command
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
@@ -16,14 +16,27 @@ router.message.middleware(TestMiddleware())
 #     number = State()
 
 
-@router.message(CommandStart())
-async def cmd_start(message: Message):
-    await message.answer(f"Привет, {message.from_user.first_name}! \nТвой ID: {message.from_user.id}")
+@router.message(Command('start'))
+async def start_handler(message: Message):
+    await message.answer(f"Привет, {message.from_user.first_name}! \nЭтот бот помогает дизайнерам и сайтологи,"
+                         f" предоставляя HTML и CSS-коды. \nТвой ID: {message.from_user.id} "
+                         f"\nИспользуй /help для навигации.", reply_markup=kb.menu_keyboard
+                         )
+
 
 @router.message(Command('help'))
-async def cmd_help(message: Message):
-    await message.reply("Это команда /help")
+async def help_handler(message: Message):
+    await message.reply(
+        "ℹ️ *Доступные команды:*\n"
+        "/start - Начать работу с ботом\n"
+        "/menu - Главное меню\n"
+        "/help - Помощь по командам",
+        parse_mode="Markdown"
+    )
 
+@router.message(Command("menu"))
+async def menu_handler(message: Message):
+    await message.answer("📌 Главное меню:", reply_markup=kb.menu_keyboard)
 # @router.message(Command("get_photo"))
 # async def get_photo(message: Message):
 #     await message.answer_photo(photo="ссылка", caption="описание к картинке")
