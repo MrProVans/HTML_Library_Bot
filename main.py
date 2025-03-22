@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 
 # from config import TOKEN
-from app.handlers import router
+from app.handlers.common_handlers import router
 
 
 async def main():
