@@ -11,12 +11,12 @@ from app.handlers.admin_handlers import admin_router
 from app.database import db
 
 
-async def test_db():
-    try:
-        count = await db.users.count_documents({})
-        print(f"✅ Подключение к MongoDB успешно! Количество пользователей: {count}")
-    except Exception as e:
-        print(f"❌ Ошибка подключения к MongoDB: {e}")
+# async def test_db():
+#     try:
+#         count = await db.users.count_documents({})
+#         print(f"✅ Подключение к MongoDB успешно! Количество пользователей: {count}")
+#     except Exception as e:
+#         print(f"❌ Ошибка подключения к MongoDB: {e}")
 
 async def main():
     load_dotenv()
@@ -24,7 +24,7 @@ async def main():
     dp = Dispatcher()
     dp.include_router(router)
     dp.include_router(admin_router)
-    await test_db()
+    # await test_db()
     await dp.start_polling(bot)
 
 
