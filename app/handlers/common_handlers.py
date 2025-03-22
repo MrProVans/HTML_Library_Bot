@@ -18,7 +18,7 @@ router.message.middleware(TestMiddleware())
 
 @router.message(Command('start'))
 async def start_handler(message: Message):
-    await message.answer(f"Привет, {message.from_user.first_name}! \nЭтот бот помогает дизайнерам и сайтологи,"
+    await message.answer(f"Привет, {message.from_user.first_name}! \nЭтот бот помогает дизайнерам и сайтологам,"
                          f" предоставляя HTML и CSS-коды. \nТвой ID: {message.from_user.id} "
                          f"\nИспользуй /help для навигации.", reply_markup=kb.menu_keyboard
                          )
