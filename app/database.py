@@ -17,7 +17,5 @@ css_codes = db["css-codes"]
 
 async def init_db():
     """Инициализация базы данных, создание индексов"""
-    await users.create_index("user_id", unique=True)
-    await admins.create_index("admin_id", unique=True)
     print("✅ База данных инициализирована!")
 
