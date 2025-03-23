@@ -4,15 +4,6 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from aiogram.types import Message
 
 
-# Главное меню
-menu_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="📚 HTML-коды"), KeyboardButton(text="🎨 CSS-коды")],
-        [KeyboardButton(text="ℹ️ Помощь")]
-    ],
-    resize_keyboard=True
-)
-
 # Политика конфиденциальности
 inline_privacy = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Открыть', url='https://docs.google.com/document/d/1xlgO_JlneAiabA7KX-nqhMYTW0jb_JLUAfC9x2TUSFo/edit?tab=t.0')]])
@@ -20,6 +11,20 @@ inline_privacy = InlineKeyboardMarkup(inline_keyboard=[
 # Приобрести доступ
 buy_access = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Получить доступ', url="https://t.me/tyomchikxxx")]])
+
+# Меню клиента
+client_menu = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Меню клиента", callback_data="open_client_menu")]
+    ]
+)
+
+# Меню админа
+admin_menu = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Меню админа", callback_data="open_admin_menu")]
+    ]
+)
 
 # main = ReplyKeyboardMarkup(keyboard=[
 #     [KeyboardButton(text='Каталог')],
