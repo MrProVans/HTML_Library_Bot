@@ -2,6 +2,7 @@ import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
+from bson import ObjectId
 
 load_dotenv()
 
@@ -43,13 +44,13 @@ def get_tasks():
     return list(db.tasks.find({"completed": False}))
 
 def edit_task(task_id, new_text):
-    db.tasks.update_one({"_id": task_id}, {"$set": {"text": new_text}})
+    db.tasks.update_one({"_id": ObjectId(task_id)}, {"$set": {"text": new_text}})
 
 def delete_task(task_id):
-    db.tasks.delete_one({"_id": task_id})
+    db.tasks.delete_one({"_id": ObjectId(task_id)})
 
 def complete_task(task_id):
-    db.tasks.update_one({"_id": task_id}, {"$set": {"completed": True}})
+    db.tasks.update_one({"_id": ObjectId(task_id)}, {"$set": {"completed": True}})
 
 def auto_update_tasks():
     """Автоматически переносит просроченные задачи и напоминает за день до дедлайна"""
