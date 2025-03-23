@@ -49,7 +49,10 @@ async def open_admin_menu(callback: CallbackQuery):
             "ℹ️ *Доступные команды для администратора:*\n"
             "/ShowClients - Список клиентов\n"
             "/AddClient - Добавление клиента\n"
-            "/DeleteClient - Удаление клиента\n"
+            "/DeleteClient - Удаление клиента\n",
+            "/AddCode - Добавить HTML/CSS код\n"
+            "/EditCode - Редактировать код\n"
+            "/DeleteCode - Удалить код\n"
             "/TaskMenu - Меню планировщика задач",
             parse_mode="Markdown"
         )
