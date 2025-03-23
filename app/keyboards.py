@@ -26,6 +26,14 @@ admin_menu = InlineKeyboardMarkup(
     ]
 )
 
+task_menu = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="➕ Добавить задачу", callback_data="add_task")],
+    [InlineKeyboardButton(text="✏ Редактировать задачу", callback_data="edit_task")],
+    [InlineKeyboardButton(text="🗑 Удалить задачу", callback_data="delete_task")],
+    [InlineKeyboardButton(text="📋 Мои задачи", callback_data="view_tasks")],
+    [InlineKeyboardButton(text="✅ Отметить выполненной", callback_data="complete_task")]
+])
+
 # main = ReplyKeyboardMarkup(keyboard=[
 #     [KeyboardButton(text='Каталог')],
 #     [KeyboardButton(text='Корзина'), KeyboardButton(text='Контакты')]
