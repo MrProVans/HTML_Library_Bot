@@ -1,6 +1,7 @@
 from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
                            InlineKeyboardMarkup, InlineKeyboardButton)
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
+from aiogram.types import Message
 
 
 # Главное меню
@@ -13,9 +14,12 @@ menu_keyboard = ReplyKeyboardMarkup(
 )
 
 # Политика конфиденциальности
-inline_policy = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Открыть', url='https://docs.google.com/document/d/1xlgO_JlneAiabA7KX-nqhMYTW0jb_JLUAfC9x2TUSFo/edit?tab=t.0')],
-])
+inline_privacy = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Открыть', url='https://docs.google.com/document/d/1xlgO_JlneAiabA7KX-nqhMYTW0jb_JLUAfC9x2TUSFo/edit?tab=t.0')]])
+
+# Приобрести доступ
+buy_access = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Получить доступ', url="https://t.me/tyomchikxxx")]])
 
 # main = ReplyKeyboardMarkup(keyboard=[
 #     [KeyboardButton(text='Каталог')],

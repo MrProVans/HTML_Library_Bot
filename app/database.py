@@ -16,14 +16,15 @@ db = client["html_library"]
 # css_codes = db["css-codes"]
 
 
-async def is_admin(user_id: int) -> bool:
-    """Проверяет, является ли пользователь администратором"""
-    return await db.admins.find_one({"adminId": user_id}) is not None
-
 def get_admins_id():
     """Получает список ID всех админов из базы данных"""
     list_admins = db.admins.find({}, {"adminId": 1})
     return [admin["adminId"] for admin in list_admins]
+
+def get_clients_id():
+    """Получает список ID всех клиентов из базы данных"""
+    list_clients = db.clients.find({}, {"clientId": 1})
+    return [client["clientId"] for client in list_clients]
 
 def get_count_admins():
     """Получает количество всех админов из базы данных"""
