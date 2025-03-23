@@ -39,13 +39,10 @@ async def open_admin_menu(callback: CallbackQuery):
             "/ShowClients - Список клиентов\n"
             "/AddClient - Добавление клиента\n"
             "/DeleteClient - Удаление клиента\n"
-            "/AddCode - Добавить HTML/CSS код\n"
-            "/DeleteCode - Удалить код\n"
-            "/ShowChanges - Посмотреть последние изменения\n"
-            "/CreateNews - Добавить новость\n"
-            "/DeleteNews - Удалить новость",
+            "/TaskMenu - Меню планировщика задач",
             parse_mode="Markdown"
         )
+        await callback.answer('')
     else:
         await callback.message.answer("❌ У вас нет прав администратора!")
 
@@ -70,40 +67,13 @@ async def delete_client(message: Message):
     else:
         await message.answer("❌ У вас нет прав администратора!")
 
-@admin_router.message(Command("AddCode"))
-async def add_code(message: Message):
-    if str(message.from_user.id) in ADMINS:
-        await message.answer("Тут добавить код")
-    else:
-        await message.answer("❌ У вас нет прав администратора!")
-
-@admin_router.message(Command("DeleteCode"))
-async def delete_code(message: Message):
-    if str(message.from_user.id) in ADMINS:
-        await message.answer("Тут удалить код")
-    else:
-        await message.answer("❌ У вас нет прав администратора!")
-
-@admin_router.message(Command("ShowChanges"))
-async def show_changes(message: Message):
-    if str(message.from_user.id) in ADMINS:
-        await message.answer("Тут посмотреть изменения")
-    else:
-        await message.answer("❌ У вас нет прав администратора!")
-
-@admin_router.message(Command("CreateNews"))
+@admin_router.message(Command("TaskMenu"))
 async def create_news(message: Message):
     if str(message.from_user.id) in ADMINS:
-        await message.answer("Тут добавить новость")
+        await message.answer("Тут меню для работы с задачами")
     else:
         await message.answer("❌ У вас нет прав администратора!")
 
-@admin_router.message(Command("DeleteNews"))
-async def delete_news(message: Message):
-    if str(message.from_user.id) in ADMINS:
-        await message.answer("Тут удалить новость")
-    else:
-        await message.answer("❌ У вас нет прав администратора!")
 #
 #
 # @admin_router.message(Command("AddUser"))

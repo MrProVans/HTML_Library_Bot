@@ -32,5 +32,7 @@ async def open_client_menu(callback: CallbackQuery):
             "Я хз что тут будет\n",
             parse_mode="Markdown"
         )
+        await callback.answer('')
     else:
         await callback.message.answer("❌ У вас нет прав клиента!")
+        await callback.answer('')
